@@ -1,0 +1,220 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CricketGame</title>
+  <style>
+    body{
+      text-align:center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bat Ball Stump Game</h1>
+  <button onclick="
+  let computerChoice=generateComputerChoice();
+  let resultMsg=getResult('Bat',computerChoice);showResult('Bat',computerChoice,resultMsg);">Bat</button>
+
+  <button onclick="
+   computerChoice=generateComputerChoice();
+   resultMsg=getResult('Ball',computerChoice);showResult('Ball',computerChoice,resultMsg);">Ball</button>
+   <button onclick="
+   computerChoice=generateComputerChoice();
+   resultMsg=getResult('Stump',computerChoice);showResult('Stump',computerChoice,resultMsg);">Stump</button>
+
+   <script>
+
+    let score={
+      win:0,
+      lost:0,
+      tie:0,
+      displayScore:function(){
+        return `No of matches won ${score.win}, Lost:${score.lost}, Tie:${tie}`;
+      }
+
+    };
+
+       function GenerateComputerChoice(){
+        let randomNumber=Math.random()*3;
+        if(randomNumber>0&&randomNumber<=1){
+          return`Bat`;
+        }else if(randomNumber>1&&randomNumber<=2){
+          return`Ball`;
+        }else{
+          return`Stump`;
+        }
+       }
+
+
+       function getResults(userMove,computerMove){
+        if(userMove==='bat'){
+          if(computerMove==='Ball'){
+            score.win++;
+            return `user won`;
+          }else if(computerMove==='Ball'){
+            score.tie++;
+            return `Its a Tie`;
+          }else if(computerMove==='Stump'){
+            score.lost++;
+            return`computer has won`;
+          }
+        }else if(userMove==='Ball'){
+          if(computerMove==='Ball'){
+            score.tie++;
+            return `Its a tie`;
+          }else if(computerMove==='Bat'){
+            score.lost++;
+            return `Computer has won`;
+          }else if(computerMove==='Stump'){
+            score.win++;
+            return`user won`;
+          }
+          else if(userMove==='Stump'){
+            if(computerMove==='ball'){
+              score.win++;
+              return`user won`;
+            }else if(computerMove==='Bat'){
+              score.lost++;
+              return`compuetr has won`;
+            }else if(computerMove==='Stump'){
+              score.tie++;
+              return `Its a Tie`;
+            }
+          }
+        }
+        function showResult(userMove,computerMove,result){
+          alert(`you have choosen ${userMove}. computer choice is ${computerMove}
+          ${result}
+
+          ${score.displayScore()}`);
+        }
+          
+       }
+   </script>
+
+  
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CricketGame</title>
+  <style>
+    body {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bat Ball Stump Game</h1>
+  <button onclick="
+    let computerChoice = generateComputerChoice();
+    let resultMsg = getResult('Bat', computerChoice);
+    showResult('Bat', computerChoice, resultMsg);
+  ">Bat</button>
+
+  <button onclick="
+     computerChoice = generateComputerChoice();
+     resultMsg = getResult('Ball', computerChoice);
+    showResult('Ball', computerChoice, resultMsg);
+  ">Ball</button>
+  
+  <button onclick="
+     computerChoice = generateComputerChoice();
+     resultMsg = getResult('Stump', computerChoice);
+    showResult('Stump', computerChoice, resultMsg);
+  ">Stump</button>
+  <!--localStorage.clear() this will clear the all data -->
+  <button onclick="localStorage.clear()
+  let score;
+  resetScore();
+  ">Reset</button>
+
+  <script>
+    let scoreStr=localStorage.getItem('score');
+    resetScore(scoreStr);
+    function resetScore (scoreStr){
+       score= scoreStr ? JSON.parse(scoreStr):{
+        win: 0,
+      lost: 0,
+      tie: 0,
+      }
+    }
+    
+    // here JSON.parse() will parse the values  like brings the scores to another line if that is defined then goes to win,lost,tie line when we added || (or) operstor
+     
+    // if(scoreStr!==undefined){
+    //   score=JSON.parse(scoreStr);
+    // }else{
+    
+      // displayScore: function() {
+      //   return `Number of matches won: ${score.win}, Lost: ${score.lost}, Tie: ${score.tie}`;// we can this.win,this.lost and this.tie also insgtead of  score.win,lost,tie
+      // }
+    
+    
+  
+    score.displayScore= function() {
+        return `Number of matches won: ${score.win}, Lost: ${score.lost}, Tie: ${score.tie}`;// we can this.win,this.lost and this.tie also insgtead of  score.win,lost,tie
+      }
+
+    function generateComputerChoice() {
+      let randomNumber = Math.random() * 3;
+      if (randomNumber <= 1) {
+        return 'Bat';
+      } else if (randomNumber <= 2) {
+        return 'Ball';
+      } else {
+        return 'Stump';
+      }
+    }
+
+    function getResult(userMove, computerMove) {
+      if (userMove === 'Bat') {
+        if (computerMove === 'Ball') {
+          score.win++;
+          return 'User won';
+        } else if (computerMove === 'Stump') {
+          score.lost++;
+          return 'Computer has won';
+        } else {
+          score.tie++;
+          return 'It\'s a Tie';
+        }
+      } else if (userMove === 'Ball') {
+        if (computerMove === 'Bat') {
+          score.lost++;
+          return 'Computer has won';
+        } else if (computerMove === 'Stump') {
+          score.win++;
+          return 'User won';
+        } else {
+          score.tie++;
+          return 'It\'s a Tie';
+        }
+      } else if (userMove === 'Stump') {
+        if (computerMove === 'Ball') {
+          score.win++;
+          return 'User won';
+        } else if (computerMove === 'Bat') {
+          score.lost++;
+          return 'Computer has won';
+        } else {
+          score.tie++;
+          return 'It\'s a Tie';
+        }
+      }
+    }
+
+    function showResult(userMove, computerMove, result) {
+      localStorage.setItem('score',JSON.stringify(score));
+      alert(`You have chosen ${userMove}. Computer's choice is ${computerMove}.
+${result}
+
+${score.displayScore()}`);
+    }
+  </script>
+</body>
+</html>

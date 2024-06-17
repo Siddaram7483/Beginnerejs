@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>localStorage</title>
+</head>
+<body>
+  <script>
+      let product={
+    name:'t-shirt',
+    price:6689,
+    rating:{
+      stars:4.5,
+      noOfReviews:450,
+    }
+  };
+    localStorage.setItem('name','siddaram kusur');
+    localStorage.setItem('wears','redColor');
+    console.log(localStorage.getItem('name'));
+    console.log(localStorage.getItem('wears'));
+    // localStorage.setItem('product',JSON.stringify(product));//even it commented this still gives output cos it is stored in the local stroage of the browser
+    console.log(localStorage.getItem('product'));
+    let product2 = JSON.parse(localStorage.getItem('product'));
+    console.log(product2);
+    localStorage.removeItem('name');//only remove the name key and its  corresponding value
+    localStorage.clear();//it removes all key and value paired 
+    
+  
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h3 id="Greeting"></h3>
+  <!-- <h2 class="rajj"> my name is rajj</h2> -->
+  <script>
+    // let head=document.getElementById='#Greeting';
+    let date=new Date();
+    let hours = date.getHours();
+    let heading= document.querySelector('#Greeting');
+   hours=6;
+   hours=15;
+   hours=34;
+
+    // let name=document.getElementsByClassName='.rajj';
+    if(hours>5 && hours<12){
+      heading.innerHTML='good morning';
+    }else if(hours>12 && hours<18){
+      heading.innerHTML='good aftrnoon';
+    }else{
+      heading.innerHTML='goodnight';
+    }
+   
+
+  </script>
+  
+</body>
+</html>

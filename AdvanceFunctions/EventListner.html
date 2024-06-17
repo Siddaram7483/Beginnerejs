@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AddEventListner</title>
+  <button id="my-button">Click Me</button>
+</head>
+<body>
+  <script>
+    //eventListner in js instead of onclick in html page 
+   let buttonElement = document.querySelector('#my-button');
+  //  buttonElement.addEventListener('click',event =>console.log('i am clicked'));
+   //  let buttonElement = document.querySelector('#my-button');
+  let behavior =event =>console.log('i am clicked')
+   buttonElement.addEventListener('click',behavior);
+   buttonElement.removeEventListener('event', behavior);
+
+  let printDate = event => console.log(new Date());
+  buttonElement.addEventListener('click', printDate );
+
+
+  let arr =[3,4,5,6,7];
+  for(let i=0; i<arr.length;i++){
+    console.log(arr[i]);
+  }
+ //for each loop without for loop and having single argument so that we can also use the modern arrow function also if u wish to do
+
+ //normal function
+  arr.forEach(function(num){
+    console.log(num);
+  })
+  //modern function with arrow mark
+  arr.forEach ((num) => console.log(num) );
+
+  
+  // let myName = driven => console.log('siddaram here');
+  // buttonElement.addEventListener('click',myName);
+
+ function  search (arr, num){
+  for(let i=0; i<arr.length;i++){
+    if(arr[i]===num){
+    console.log(`number found at index: ${i}`);
+    return ;
+    }
+  }
+  console.log('number not found');
+
+ }
+search(arr,10);
+// in for-each loop the return statement will work like continue statement which means num===5 na so this will skip and execute other numbers except 5
+let arr2 = [1,2,3,4,5,6,7,8,9];
+    arr2.forEach(num =>{
+      if(num===5){
+        return;
+      }
+      console.log(`visited :${num}`);
+    })
+  </script>
+  
+  
+</body>
+</html>

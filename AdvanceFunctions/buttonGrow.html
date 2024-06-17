@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .btn-subscribe{
+      font-size: 15px;
+      height: 20px;
+      width:80px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 8px;
+    }
+    .js-size-double{
+      font-size:30px;
+      height: 40px;
+      width: 160px;
+    }
+  </style>
+</head>
+<body>
+  <!-- <button class="btn-subscribe size-double" onclick="setTimeout(DoubleTheSize,2000)">Subscribe</button> -->
+  <button class="btn-subscribe" >Subscribe</button>
+  <script>
+    let buttonElement=document.querySelector('.btn-subscribe');
+    buttonElement.addEventListener('click', event =>{
+      setTimeout(DoubleTheSize,2000);
+    });
+
+    function DoubleTheSize(){
+    let buttonElement=document.querySelector('.btn-subscribe');
+    buttonElement.classList.add('js-size-double');
+    }
+
+//for each loop in arrays
+    let arr=[1,2,3,4,5,6,7];
+    let sum =0;
+    arr.forEach(num =>sum +=num);
+    console.log(sum);
+
+    // map method in js to transforms
+    let squares= arr.map(num=>num*num);
+    console.log(squares);
+
+  </script>
+  
+</body>
+</html>
